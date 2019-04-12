@@ -17,17 +17,17 @@ public class MainActivity extends AppCompatActivity implements listChatFragment.
         setContentView(R.layout.activity_main);
 
         ViewPager vp = (ViewPager) findViewById(R.id.viewPager);
-        ViewPagerAdapter vpAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ViewPagerAdapter vpAdapter = new ViewPagerAdapter(getSupportFragmentManager(), MainActivity.this);
         vp.setAdapter(vpAdapter);
         TabLayout tabs = (TabLayout) findViewById(R.id.tabLayout);
         tabs.setupWithViewPager(vp);
-
+        getSupportActionBar().setTitle("WhatsApp");
     }
 
 
     @Override
     public void sendData(String message) {
-        String tag = "android:switcher:" + R.id.viewPager + ":" + 1;
+        String tag = "android:switcher:" + R.id.viewPager + ":" + 2;
         statusFragment f = (statusFragment) getSupportFragmentManager().findFragmentByTag(tag);
         f.displayReceivedData(message);
     }
